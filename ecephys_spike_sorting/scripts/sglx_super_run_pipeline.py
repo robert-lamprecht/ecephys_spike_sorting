@@ -8,10 +8,12 @@ from helpers import run_one_probe
 from create_input_json import createInputJson
 
 
-# script to run CatGT, kilosort, postprocessing and TPrime on data collected using
-# SpikeGLX. The construction of the paths assumes data was saved with
-# "Folder per probe" selected (probes stored in separate folders) AND
-# that CatGT is run with the -out_prb_fld option
+# script to run kilosort, postprocessing and TPrime on data collected using
+# SpikeGLX, and then concatenated using supercat. 
+# "Folder per probe" orgainizatin is assumed, which means CatGT was run with 
+# the option -out_prb_fld
+# CatGT is not run in this script (run_CatGT = False), but create_input_json 
+# still must be run to create correct paths for kilosort.
 
 # -------------------------------
 # -------------------------------
@@ -396,7 +398,8 @@ for spec in run_specs:
                                        ks_CAR = ks_CAR,
                                        extracted_data_directory = data_directory[i],
                                        event_ex_param_str = event_ex_param_str,
-                                       c_Waves_snr_um = c_Waves_snr_um,                               
+                                       c_Waves_snr_um = c_Waves_snr_um,
+                                       c_Waves_calc_half = False,
                                        qm_isi_thresh = refPerMS/1000,
                                        ks4_duplicate_spike_ms = ks4_duplicate_spike_ms,
                                        ks4_min_template_size_um = ks4_min_template_size_um,

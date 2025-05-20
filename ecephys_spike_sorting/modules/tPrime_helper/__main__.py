@@ -48,6 +48,16 @@ def call_TPrime(args):
     # check for presence of an fyi file, indicating run with catgt 3.0 or later
     fyi_path = run_directory.replace('\\', '/') + '/' + run_name + '_all_fyi.txt'
     all_fyi_exists = Path(fyi_path).is_file()
+
+    if args['tPrime_helper_params']['catGT_out_tag'] == 'supercat':
+        # only use offsets for runs that have been processed with supercat
+        # output from catgt should not have discontinuites.
+        # note that to use offsets for non-supercat data, the offsets would
+        # need to be compiled in catgt_helper (just like the fyi_all)
+        offset_path =  run_directory.replace('\\', '/') + '/' + run_name + '_sc_offsets.txt'        
+        offset_exists = Path(offset_path).is_file()
+    else:
+        offset_exists = False
     
     if not all_fyi_exists:
         # check for an fyi file -- assume that CatGT was run directly from
@@ -56,7 +66,7 @@ def call_TPrime(args):
         print('Checking for _fyi.txt file from CatGT run outside ecephys pipeline.')
         fyi_path = run_directory.replace('\\', '/') + '/' + run_name + '_fyi.txt'
         fyi_exists = Path(fyi_path).is_file()
-    
+
     if all_fyi_exists or fyi_exists:
         
         toStream_params = args['tPrime_helper_params']['toStream_sync_params']
@@ -64,6 +74,7 @@ def call_TPrime(args):
         toStream_id = (toStream_js, toStream_ip)
         toStream_path, from_list, from_list_ids, events_list, from_stream_index, out_list, all_list \
             = parse_catgt_fyi(fyi_path, toStream_id)
+            
         
         if toStream_js == 2:
             # if toStream is an imec probe, create the file of spike times in sec for all output files
@@ -140,6 +151,9 @@ def call_TPrime(args):
     # Print out command for help with debugging
     tcmd = exe_path + ' -syncperiod=' + repr(sync_period) + \
         ' -tostream=' + toStream_path
+        
+    if offset_exists:
+        tcmd = tcmd + ' -offsets=' + offset_path
 
     for i, fp in enumerate(from_list):
         tcmd = tcmd + ' -fromstream=' + repr(i) + ',' + fp

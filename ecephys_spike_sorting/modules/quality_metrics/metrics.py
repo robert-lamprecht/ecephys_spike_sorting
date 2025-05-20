@@ -106,7 +106,7 @@ def calculate_metrics(spike_times, spike_clusters, spike_templates, amplitudes, 
             
             # determine template this is the best match for each cluster id
             # initialize template ids
-            template_ids = template_ids + total_units + 10  # unassinged template_ids out of range
+            template_ids = template_ids + total_units + 10  # unassigned template_ids out of range
             curr_spike_clusters = spike_clusters[in_epoch]
             curr_spike_templates = spike_templates[in_epoch]
             curr_cluster_ids = np.unique(curr_spike_clusters)
@@ -141,7 +141,7 @@ def calculate_metrics(spike_times, spike_clusters, spike_templates, amplitudes, 
             print("Calculating drift metrics")
             max_drift, cumulative_drift = calculate_drift_metrics(spike_times[in_epoch],
                                                        spike_clusters[in_epoch], 
-                                                       spike_templates,
+                                                       spike_templates[in_epoch],
                                                        template_ids,
                                                        total_units,
                                                        pc_features[in_epoch,:,:],
@@ -553,7 +553,7 @@ def calculate_drift_metrics(spike_times,
     
     
     # make arrays of just those spikes for which the template matches the 
-    # majority template for htat cluster. These operations make copies of the
+    # majority template for that cluster. These operations make copies of the
     # arrays.
     m_spike_clusters = spike_clusters[match_maj]
     m_spike_times = spike_times[match_maj]

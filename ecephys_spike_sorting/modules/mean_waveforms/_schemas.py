@@ -12,11 +12,12 @@ class MeanWaveformParams(DefaultSchema):
     upsampling_factor = Float(require=False, default=200/82, help='Upsampling factor for calculating waveform metrics')
     spread_threshold = Float(require=False, default=0.12, help='Threshold for computing channel spread of 2D waveform')
     site_range = Int(require=False, default=16, help='Number of sites to use for 2D waveform metrics')
-    cWaves_path = InputDir(require=False, help='directory containing the TPrime executable.')
+    cWaves_path = InputDir(require=False, help='directory containing the C_Waves executable.')
     use_C_Waves = Bool(require=False, default=False, help='Use faster C routine to calculate mean waveforms')
     snr_radius = Int(require=False, default=8, help='disk radius (chans) about pk-chan for snr calculation in C_waves')
     snr_radius_um = Int(require=False, default=8, help='disk radius (um) about pk-chan for snr calculation in C_waves')
     mean_waveforms_file = String(required=True, help='Path to mean waveforms file (.npy)')
+    calc_half_run = Bool(require=False, default=False, help='calculate mean waveforms for 1st + 2nd half of recording')
     
 
 class InputParameters(ArgSchema):

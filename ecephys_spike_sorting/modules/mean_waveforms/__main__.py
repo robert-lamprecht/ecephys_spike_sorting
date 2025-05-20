@@ -159,7 +159,79 @@ def calculate_mean_waveforms(args):
            wm_fullpath = os.path.join(pathlib.Path(wm_fullpath).parent, pathlib.Path(wm_fullpath).stem + '_' + repr(clu_version) + '.csv')
     
         metrics.to_csv(wm_fullpath, index=False)
+        
+        if args['mean_waveform_params']['calc_half_run']:
+            # For UnitMatch: calculate mean waveforms for the first and second half
+            # of the recording, using the -startsecs and -endsecs options in C_Waves
+            startsecs = float(np.min(spike_times))/args['ephys_params']['sample_rate']
+            endsecs = float(np.max(spike_times))/args['ephys_params']['sample_rate']
             
+            cwaves_cmd = exe_path + ' -spikeglx_bin=' + spikeglx_bin + \
+                                    ' -clus_table_npy=' + clus_table_npy + \
+                                    ' -clus_time_npy=' + clus_time_npy + \
+                                    ' -clus_lbl_npy=' + clus_lbl_npy + \
+                                    ' -dest=' + dest + \
+                                    ' -samples_per_spike=' + repr(args['mean_waveform_params']['samples_per_spike']) + \
+                                    ' -pre_samples=' + repr(args['mean_waveform_params']['pre_samples']) + \
+                                    ' -num_spikes=' + repr(args['mean_waveform_params']['spikes_per_epoch']) + \
+                                    ' -snr_radius=' + repr(args['mean_waveform_params']['snr_radius']) + \
+                                    ' -snr_radius_um=' + repr(args['mean_waveform_params']['snr_radius_um']) + \
+                                    ' -prefix=first_half' + \
+                                    ' -startsecs=' + repr(startsecs) + \
+                                    ' -endsecs=' + repr(endsecs/2.0)
+                                    
+            print(cwaves_cmd)
+            
+            # make the C_Waves call
+            subprocess.Popen(cwaves_cmd,shell='False').wait()
+            
+            cwaves_cmd = exe_path + ' -spikeglx_bin=' + spikeglx_bin + \
+                                    ' -clus_table_npy=' + clus_table_npy + \
+                                    ' -clus_time_npy=' + clus_time_npy + \
+                                    ' -clus_lbl_npy=' + clus_lbl_npy + \
+                                    ' -dest=' + dest + \
+                                    ' -samples_per_spike=' + repr(args['mean_waveform_params']['samples_per_spike']) + \
+                                    ' -pre_samples=' + repr(args['mean_waveform_params']['pre_samples']) + \
+                                    ' -num_spikes=' + repr(args['mean_waveform_params']['spikes_per_epoch']) + \
+                                    ' -snr_radius=' + repr(args['mean_waveform_params']['snr_radius']) + \
+                                    ' -snr_radius_um=' + repr(args['mean_waveform_params']['snr_radius_um']) + \
+                                    ' -prefix=second_half' + \
+                                    ' -startsecs=' + repr(endsecs/2.0) + \
+                                    ' -endsecs=' + repr(endsecs)
+                                    
+            print(cwaves_cmd)
+            
+            # make the C_Waves call
+            subprocess.Popen(cwaves_cmd,shell='False').wait()
+            
+            # for first version, retain original names
+            if clu_version == 0:
+                fh_name = 'first_half_mean_waveforms.npy'
+                sh_name = 'second_half_mean_waveforms.npy'
+                fh_snr_name = 'first_half_cluster_snr.npy'
+                sh_snr_name = 'second_half_cluster_snr.npy'
+ 
+            else:
+                # build names with version number and rename
+                # version 0 files are not renamed to maintain compatiblity with
+                fh_name = 'first_half_mean_waveforms_' + repr(clu_version) + '.npy'
+                sh_name = 'second_half_mean_waveforms_' + repr(clu_version) + '.npy'
+                fh_snr_name = 'first_half_clsuter_snr_' + repr(clu_version) + '.npy'
+                sh_snr_name = 'first_half_clsuter_snr_' + repr(clu_version) + '.npy'
+                os.rename(os.path.join(dest, 'first_half_mean_waveforms.npy'), os.path.join(dest,fh_name))
+                os.rename(os.path.join(dest, 'second_half_mean_waveforms.npy'), os.path.join(dest,sh_name))
+                os.rename(os.path.join(dest, 'first_half_cluster_snr.npy'), os.path.join(dest,fh_snr_name))
+                os.rename(os.path.join(dest, 'second_half_cluster_snr.npy'), os.path.join(dest,sh_snr_name))
+                
+            # create waveform files for UnitMatch from the mean_waveforms files
+            fh_counts = np.load(os.path.join(dest,'first_half_cluster_snr.npy'))[:,1]
+            sh_counts = np.load(os.path.join(dest,'second_half_cluster_snr.npy'))[:,1]
+            create_UnitMatch_input(fh_counts, sh_counts, fh_name, sh_name, 
+                                 args['ephys_params']['num_sync_channels'], dest)
+            
+            
+        
+           
         
     else:
         
@@ -210,6 +282,37 @@ def calculate_mean_waveforms(args):
     print()
     
     return {"execution_time" : execution_time} # output manifest
+
+
+def create_UnitMatch_input(fh_counts, sh_counts, fh_name, sh_name, num_sync, dest ):
+    # parse mean_waveform files from the first and second half of run for 
+    # input to UnitMatch
+    # n_spike = array of counts for each spike label, 0 to maximum spike label
+    # fh_name = name for mean_waveforms.npy file for first half
+    # sh_name = name for mean_waveforms.npy file for the 2nd half
+    # dest = phy directory of output, inclluding the means_waveforms files
+    # and the RawWaveforms directory
+    
+    # checkfor directory 'RawWaveforms'
+    wave_dir = os.path.join(dest,'RawWaveforms')
+    if not os.path.exists(wave_dir):
+        os.makedirs(wave_dir)
+        
+    fh_waves = np.load(os.path.join(dest,fh_name))
+    sh_waves = np.load(os.path.join(dest,sh_name))
+    [n_clu, n_ch, nt] = fh_waves.shape
+    n_save = n_ch - num_sync  # remove sync channel/status word end of binary
+        
+        
+    for i in range(n_clu):
+        if (fh_counts[i] > 0) and (sh_counts[i] > 0):
+            new_wave = np.zeros((nt,n_save,2))
+            new_wave[:,:,0] = np.transpose(fh_waves[i,0:n_save,:])
+            new_wave[:,:,1] = np.transpose(sh_waves[i,0:n_save,:])
+            np.save(os.path.join(wave_dir, f'Unit{i}_RawSpikes.npy'),new_wave)          
+            
+    
+    
 
 
 def main():
