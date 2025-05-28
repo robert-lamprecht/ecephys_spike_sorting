@@ -1,0 +1,64 @@
+{
+  "input_parameters": {
+    "ks4_helper_params": {
+      "do_CAR": false,
+      "ks_make_copy": true,
+      "doFilter": 0,
+      "save_extra_vars": true,
+      "fshigh": 300.0,
+      "fslow": 10000.0,
+      "fproc": "D:\\kilosort_datatemp\temp_wh.dat",
+      "ks4_params": {
+        "Th_universal": 8.0,
+        "ccg_threshold": 0.25,
+        "min_template_size": 10.0,
+        "nblocks": 6,
+        "nearest_templates": 100,
+        "acg_threshold": 0.2,
+        "templates_from_data": true,
+        "template_seed": 1,
+        "Th_single_ch": 8.0,
+        "whitening_range": 43,
+        "duplicate_spike_ms": 0.25,
+        "template_sizes": 5,
+        "tmax": -1.0,
+        "nearest_chans": 10,
+        "tmin": 0.0,
+        "cluster_seed": 1,
+        "sig_interp": 20.0,
+        "Th_learned": 9.0
+      },
+      "save_preprocessed_copy": false
+    },
+    "common_files": {
+      "settings_json": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514",
+      "probe_json": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\catgt_Leo_20250514_g1\\Leo_20250514_g1_imec0\\probe_json.json"
+    },
+    "ephys_params": {
+      "num_channels": 385,
+      "lfp_sample_rate": 2500.0,
+      "bit_volts": 3.02734375,
+      "vertical_site_spacing": 1e-05,
+      "reorder_lfp_channels": false,
+      "sample_rate": 29999.764435146444,
+      "probe_type": "NP2013",
+      "lfp_band_file": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\catgt_Leo_20250514_g1\\Leo_20250514_g1_imec0\\Leo_20250514_g1_tcat.imec0.lf.bin",
+      "cluster_group_file_name": "cluster_group.tsv",
+      "reference_channels": [],
+      "num_sync_channels": 1,
+      "template_zero_padding": 21,
+      "ap_band_file": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\catgt_Leo_20250514_g1\\Leo_20250514_g1_imec0\\Leo_20250514_g1_tcat.imec0.ap.bin"
+    },
+    "input_json": "C:\\Users\\RobLamp\\ecephys_spike_sorting\\json_files\\Leo_20250514_imec0-input.json",
+    "directories": {
+      "kilosort_output_tmp": "C:\\Users\\RobLamp\\Spike GLX Processing Tools\\KilosortOutputTemp",
+      "npx_directory": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514",
+      "kilosort_output_directory": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\catgt_Leo_20250514_g1\\Leo_20250514_g1_imec0\\imec0_ks4",
+      "ecephys_directory": "C:\\Users\\RobLamp\\ecephys_spike_sorting\\ecephys_spike_sorting",
+      "extracted_data_directory": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\catgt_Leo_20250514_g1\\Leo_20250514_g1_imec0"
+    },
+    "log_level": "ERROR",
+    "output_json": "C:\\Users\\RobLamp\\ecephys_spike_sorting\\json_files\\Leo_20250514_imec0-ks4_helper-output.json"
+  },
+  "execution_time": 3597.679958343506
+}

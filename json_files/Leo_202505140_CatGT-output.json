@@ -1,0 +1,46 @@
+{
+  "execution_time": 1837.5636863708496,
+  "input_parameters": {
+    "directories": {
+      "kilosort_output_directory": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514",
+      "kilosort_output_tmp": "C:\\Users\\RobLamp\\Spike GLX Processing Tools\\KilosortOutputTemp",
+      "npx_directory": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514",
+      "ecephys_directory": "C:\\Users\\RobLamp\\ecephys_spike_sorting\\ecephys_spike_sorting",
+      "extracted_data_directory": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514"
+    },
+    "output_json": "C:\\Users\\RobLamp\\ecephys_spike_sorting\\json_files\\Leo_202505140_CatGT-output.json",
+    "ephys_params": {
+      "probe_type": "NP2013",
+      "cluster_group_file_name": "cluster_group.tsv",
+      "reference_channels": [],
+      "reorder_lfp_channels": false,
+      "sample_rate": 29999.764435146444,
+      "num_channels": 385,
+      "vertical_site_spacing": 1e-05,
+      "num_sync_channels": 1,
+      "template_zero_padding": 21,
+      "lfp_band_file": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\Leo_20250514_g0\\Leo_20250514_g0_imec0\\Leo_20250514_g0_t0.imec0.lf.bin",
+      "ap_band_file": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\Leo_20250514_g0\\Leo_20250514_g0_imec0\\Leo_20250514_g0_t0.imec0.ap.bin",
+      "lfp_sample_rate": 2500.0,
+      "bit_volts": 3.02734375
+    },
+    "log_level": "ERROR",
+    "catGT_helper_params": {
+      "loccar_outer_um": 160,
+      "useGeom": true,
+      "trigger_string": "0,0",
+      "gate_string": "0,1",
+      "cmdStr": "-prb_fld -out_prb_fld -apfilter=butter,12,300,10000 -lffilter=butter,12,1,500 -gfix=0.4,0.10,0.02  ",
+      "car_mode": "gblcar",
+      "stream_string": "-ap",
+      "maxZ_um": -1.0,
+      "run_name": "Leo_20250514",
+      "loccar_inner": 3,
+      "loccar_outer": 11,
+      "loccar_inner_um": 40,
+      "catGTPath": "C:\\Users\\RobLamp\\SpikeGLXProcessingTools\\CatGT-win",
+      "probe_string": "0"
+    },
+    "input_json": "C:\\Users\\RobLamp\\ecephys_spike_sorting\\json_files\\Leo_202505140_CatGT-input.json"
+  }
+}

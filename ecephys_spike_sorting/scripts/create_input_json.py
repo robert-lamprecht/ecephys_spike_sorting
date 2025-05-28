@@ -49,7 +49,7 @@ def createInputJson(output_file,
                     tPrime_3A = False,
                     toStream_path_3A = ' ',
                     fromStream_list_3A = list(),
-                    ks_ver = '2.0',
+                    ks_ver = '4.0',
                     ks_helper_noise_threshold = 20,
                     ks_doFilter = 0,
                     ks_remDup = 0,                   
@@ -74,11 +74,13 @@ def createInputJson(output_file,
                     include_pc_metrics = True,
                     ks_nNeighbors_sites_fix = 0,
                     ks4_duplicate_spike_ms = 0.25,
-                    ks4_min_template_size_um = 10
+                    ks4_min_template_size_um = 10,
+                    ks4_binning_depth = 5,
+                    ks4_batch_size = 60000
                     ):
 
     # hard coded paths to code on your computer and system
-    ecephys_directory = r'C:\Users\colonellj\Documents\ecephys_spike_sorting\ecephys_spike_sorting'
+    ecephys_directory = r'C:\Users\RobLamp\ecephys_spike_sorting\ecephys_spike_sorting'
     
     # location of kilosort respositories for MATLAB versions.
     # determins what will be run by the kilosort_helper module
@@ -90,15 +92,15 @@ def createInputJson(output_file,
     elif ks_ver == '3.0':
         kilosort_repository = r'C:\Users\labadmin\Documents\KS20_for_preprocessed_data'
     else:
-        kilosort_repository = r''  # default path for when we aren't using any of these
+        kilosort_repository = r'C:\Users\RobLamp\Kilosort'  # default path for when we aren't using any of these
             
     npy_matlab_repository = r'C:\Users\colonellj\Documents\npy-matlab-master'
-    catGTPath = r'C:\Users\colonellj\Documents\CatGT-win-47'
-    tPrime_path=r'C:\Users\colonellj\Documents\TPrime-win'
-    cWaves_path=r'C:\Users\colonellj\Documents\C_Waves-win'
+    catGTPath = r'C:\Users\RobLamp\SpikeGLXProcessingTools\CatGT-win'
+    tPrime_path=r'C:\Users\RobLamp\SpikeGLXProcessingTools\TPrime-win'
+    cWaves_path=r'C:\Users\RobLamp\SpikeGLXProcessingTools\C_Waves-win'
          
     # for config files and kilosort working space
-    kilosort_output_tmp = r'D:\kilosort_datatemp' 
+    kilosort_output_tmp = r'C:\Users\RobLamp\Spike GLX Processing Tools\KilosortOutputTemp' 
     
     
     # KS 3.0 and 4 do not calculation pc features for phy
@@ -358,6 +360,8 @@ def createInputJson(output_file,
                     'acg_threshold' : 0.20,
                     'template_seed' : ks_LTseed,
                     'cluster_seed' : ks_CSBseed,
+                    'binning_depth' : ks4_binning_depth,
+                    'batch_size' : ks4_batch_size
             }
     },
         

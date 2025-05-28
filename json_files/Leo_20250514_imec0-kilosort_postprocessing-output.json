@@ -1,0 +1,39 @@
+{
+  "input_parameters": {
+    "output_json": "C:\\Users\\RobLamp\\ecephys_spike_sorting\\json_files\\Leo_20250514_imec0-kilosort_postprocessing-output.json",
+    "directories": {
+      "npx_directory": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514",
+      "kilosort_output_tmp": "C:\\Users\\RobLamp\\Spike GLX Processing Tools\\KilosortOutputTemp",
+      "kilosort_output_directory": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\catgt_Leo_20250514_g1\\Leo_20250514_g1_imec0\\imec0_ks4",
+      "extracted_data_directory": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\catgt_Leo_20250514_g1\\Leo_20250514_g1_imec0",
+      "ecephys_directory": "C:\\Users\\RobLamp\\ecephys_spike_sorting\\ecephys_spike_sorting"
+    },
+    "ks_postprocessing_params": {
+      "within_unit_overlap_window": 0.00017,
+      "between_unit_overlap_window": 0.00041,
+      "cWaves_path": "C:\\Users\\RobLamp\\SpikeGLXProcessingTools\\C_Waves-win",
+      "between_unit_dist_um": 66,
+      "remove_duplicates": true,
+      "align_avg_waveform": false,
+      "deletion_mode": "lowAmpCluster"
+    },
+    "ephys_params": {
+      "template_zero_padding": 21,
+      "bit_volts": 3.02734375,
+      "reorder_lfp_channels": false,
+      "sample_rate": 29999.764435146444,
+      "num_sync_channels": 1,
+      "ap_band_file": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\catgt_Leo_20250514_g1\\Leo_20250514_g1_imec0\\Leo_20250514_g1_tcat.imec0.ap.bin",
+      "probe_type": "NP2013",
+      "cluster_group_file_name": "cluster_group.tsv",
+      "reference_channels": [],
+      "lfp_sample_rate": 2500.0,
+      "vertical_site_spacing": 1e-05,
+      "lfp_band_file": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\catgt_Leo_20250514_g1\\Leo_20250514_g1_imec0\\Leo_20250514_g1_tcat.imec0.lf.bin",
+      "num_channels": 385
+    },
+    "log_level": "ERROR",
+    "input_json": "C:\\Users\\RobLamp\\ecephys_spike_sorting\\json_files\\Leo_20250514_imec0-input.json"
+  },
+  "execution_time": 35.89890718460083
+}

@@ -22,7 +22,10 @@ class ks4_params(DefaultSchema):
     acg_threshold = Float(required=False, default=0.20, help='Fraction of refractory period violations that are allowed in the ACG compared to baseline; used to assign "good" units. ') 
     template_seed = Int(required=False, default=0, help='seed to pick which batches are used for finding universal templates')
     cluster_seed = Int(required=False, default=0, help='start seed for clustering')
+    binning_depth = Int(required=False, default=5, help='depth of binning in um')
+    batch_size = Int(required=False, default=60000, help='number of samples to process at once')
     
+
 class KS4HelperParameters(DefaultSchema):
     do_CAR = Bool(required=False, default=True, help='set to True to perform common average referencing (median subtraction)')
     save_extra_vars = Bool(required=False, default=False, help='If true, save Wall and pc features in save_to_phy ')

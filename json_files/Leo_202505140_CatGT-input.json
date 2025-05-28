@@ -1,0 +1,229 @@
+{
+    "catGT_helper_params": {
+        "car_mode": "gblcar",
+        "catGTPath": "C:\\Users\\RobLamp\\SpikeGLXProcessingTools\\CatGT-win",
+        "cmdStr": "-prb_fld -out_prb_fld -apfilter=butter,12,300,10000 -lffilter=butter,12,1,500 -gfix=0.4,0.10,0.02  ",
+        "gate_string": "0,1",
+        "loccar_inner": 3,
+        "loccar_inner_um": 40,
+        "loccar_outer": 11,
+        "loccar_outer_um": 160,
+        "maxZ_um": -1,
+        "probe_string": "0",
+        "run_name": "Leo_20250514",
+        "stream_string": "-ap",
+        "trigger_string": "0,0",
+        "useGeom": true
+    },
+    "cluster_metrics": {
+        "cluster_metrics_file": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\metrics.csv"
+    },
+    "common_files": {
+        "probe_json": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\probe_json.json",
+        "settings_json": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514"
+    },
+    "depth_estimation_params": {
+        "air_gap_um": 1000,
+        "diff_thresh": -0.06,
+        "figure_location": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\probe_depth.png",
+        "freq_range": [
+            0,
+            10
+        ],
+        "hi_noise_thresh": 50.0,
+        "lo_noise_thresh": 3.0,
+        "max_freq": 150,
+        "n_passes": 10,
+        "power_thresh": 2.5,
+        "saline_range_um": [
+            3700,
+            3800
+        ],
+        "save_figure": 0,
+        "skip_s_per_pass": 10,
+        "smoothing_amount": 5,
+        "start_time": 10,
+        "time_interval": 5
+    },
+    "directories": {
+        "ecephys_directory": "C:\\Users\\RobLamp\\ecephys_spike_sorting\\ecephys_spike_sorting",
+        "extracted_data_directory": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514",
+        "kilosort_output_directory": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514",
+        "kilosort_output_tmp": "C:\\Users\\RobLamp\\Spike GLX Processing Tools\\KilosortOutputTemp",
+        "npx_directory": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514"
+    },
+    "ephys_params": {
+        "ap_band_file": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\Leo_20250514_g0\\Leo_20250514_g0_imec0\\Leo_20250514_g0_t0.imec0.ap.bin",
+        "bit_volts": 3.02734375,
+        "cluster_group_file_name": "cluster_group.tsv",
+        "lfp_band_file": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\Leo_20250514_g0\\Leo_20250514_g0_imec0\\Leo_20250514_g0_t0.imec0.lf.bin",
+        "lfp_sample_rate": 2500,
+        "num_channels": 385,
+        "num_sync_channels": 1,
+        "probe_type": "NP2013",
+        "reference_channels": [],
+        "reorder_lfp_channels": false,
+        "sample_rate": 29999.764435146444,
+        "vertical_site_spacing": 1e-05
+    },
+    "extract_from_npx_params": {
+        "npx_directory": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514",
+        "npx_extractor_executable": "C:\\Users\\svc_neuropix\\Documents\\GitHub\\npxextractor\\Release\\NpxExtractor.exe",
+        "npx_extractor_repo": "C:\\Users\\svc_neuropix\\Documents\\GitHub\\npxextractor",
+        "settings_xml": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514"
+    },
+    "kilosort_helper_params": {
+        "kilosort2_params": {
+            "AUCsplit": 0.9,
+            "CAR": 0,
+            "CSBseed": 1,
+            "KSver": "4.0",
+            "LTseed": 1,
+            "Th": "[10,4]",
+            "ThPre": 8,
+            "chanMap": "'chanMap.mat'",
+            "copy_fproc": 0,
+            "doFilter": 0,
+            "finalSplits": 1,
+            "fproc": "'C:/Users/RobLamp/Spike GLX Processing Tools/KilosortOutputTemp/temp_wh.dat'",
+            "fshigh": 150,
+            "gain": 3.02734375,
+            "labelGood": 1,
+            "lam": 10,
+            "minFR": 0.02,
+            "minfr_goodchannels": 0.1,
+            "momentum": "[20 400]",
+            "nNeighbors": 32,
+            "nblocks": 5,
+            "remDup": 0,
+            "saveRez": 1,
+            "sigmaMask": 30,
+            "whiteningRange": 43
+        },
+        "kilosort_repository": "C:\\Users\\RobLamp\\Kilosort",
+        "kilosort_version": 2,
+        "ks_make_copy": false,
+        "matlab_home_directory": "C:\\Users\\RobLamp\\Spike GLX Processing Tools\\KilosortOutputTemp",
+        "noise_threshold": 20,
+        "npy_matlab_repository": "C:\\Users\\colonellj\\Documents\\npy-matlab-master",
+        "spikeGLX_data": true,
+        "surface_channel_buffer": 15
+    },
+    "ks4_helper_params": {
+        "doFilter": 0,
+        "do_CAR": false,
+        "ks4_params": {
+            "Th_learned": 4,
+            "Th_universal": 10,
+            "acg_threshold": 0.2,
+            "batch_size": 60000,
+            "binning_depth": 5,
+            "ccg_threshold": 0.25,
+            "cluster_seed": 1,
+            "duplicate_spike_ms": 0.25,
+            "min_template_size": 10,
+            "nblocks": 5,
+            "nearest_chans": 10,
+            "nearest_templates": 100,
+            "sig_interp": 20.0,
+            "template_seed": 1,
+            "template_sizes": 5,
+            "templates_from_data": true,
+            "whitening_range": 43
+        },
+        "ks_make_copy": false,
+        "save_extra_vars": true,
+        "save_preprocessed_copy": false
+    },
+    "ks_postprocessing_params": {
+        "align_avg_waveform": false,
+        "between_unit_dist_um": 66,
+        "between_unit_overlap_window": 0.00041,
+        "cWaves_path": "C:\\Users\\RobLamp\\SpikeGLXProcessingTools\\C_Waves-win",
+        "deletion_mode": "lowAmpCluster",
+        "remove_duplicates": true,
+        "within_unit_overlap_window": 0.00017
+    },
+    "mean_waveform_params": {
+        "cWaves_path": "C:\\Users\\RobLamp\\SpikeGLXProcessingTools\\C_Waves-win",
+        "calc_half_run": false,
+        "mean_waveforms_file": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\mean_waveforms.npy",
+        "nAP": 384,
+        "num_epochs": 1,
+        "pre_samples": 20,
+        "samples_per_spike": 82,
+        "site_range": 16,
+        "snr_radius": 11,
+        "snr_radius_um": 160,
+        "spikes_per_epoch": 1000,
+        "spread_threshold": 0.12,
+        "use_C_Waves": true
+    },
+    "median_subtraction_params": {
+        "median_subtraction_executable": "C:\\Users\\svc_neuropix\\Documents\\GitHub\\spikebandmediansubtraction\\Builds\\VisualStudio2013\\Release\\SpikeBandMedianSubtraction.exe",
+        "median_subtraction_repo": "C:\\Users\\svc_neuropix\\Documents\\GitHub\\spikebandmediansubtraction\\"
+    },
+    "noise_waveform_params": {
+        "classifier_path": "C:\\Users\\RobLamp\\ecephys_spike_sorting\\ecephys_spike_sorting\\modules\\noise_templates\\rf_classifier.pkl",
+        "peak_channel_range_um": 150,
+        "use_random_forest": true
+    },
+    "psth_events": {
+        "event_ex_param_str": ""
+    },
+    "pykilosort_helper_params": {
+        "AUCsplit": 0.9,
+        "Th": "[10,4]",
+        "ThPre": 8,
+        "car": 0,
+        "copy_fproc": 0,
+        "deterministic_mode": true,
+        "doFilter": 0,
+        "fproc": "'C:/Users/RobLamp/Spike GLX Processing Tools/KilosortOutputTemp/temp_wh.dat'",
+        "fshigh": 300,
+        "fslow": 10000,
+        "ks2_mode": false,
+        "lam": 10,
+        "minFR": 0.02,
+        "minfr_goodchannels": 0,
+        "momentum": "[20 400]",
+        "nblocks": 5,
+        "perform_drift_registration": true,
+        "preprocessing_function": "kilosort2",
+        "seed": 1,
+        "sig_datashift": 20,
+        "sigmaMask": 30,
+        "whiteningRange": 43
+    },
+    "quality_metrics_params": {
+        "drift_metrics_interval_s": 51,
+        "drift_metrics_min_spikes_per_interval": 10,
+        "include_ibl": true,
+        "include_pc_metrics": true,
+        "isi_threshold": 0.0015,
+        "max_radius_um": 68,
+        "max_spikes_for_nn": 10000,
+        "max_spikes_for_unit": 500,
+        "min_isi": 0.000166,
+        "n_neighbors": 4,
+        "n_silhouette": 10000,
+        "tbin_sec": 0.001
+    },
+    "tPrime_helper_params": {
+        "catGT_out_tag": "catgt",
+        "fromStream_list_3A": [],
+        "im_ex_list": "",
+        "ni_ex_list": "",
+        "ni_sync_params": "",
+        "psth_ex_str": "",
+        "sort_out_tag": "ks2",
+        "sync_period": 1.0,
+        "tPrime_3A": false,
+        "tPrime_path": "C:\\Users\\RobLamp\\SpikeGLXProcessingTools\\TPrime-win",
+        "toStream_path_3A": " ",
+        "toStream_sync_params": ""
+    },
+    "waveform_metrics": {
+        "waveform_metrics_file": "C:\\Users\\RobLamp\\Emory\\Neurosurgery NAY Research - Documents\\Rob\\Spinal Shock\\Leo_20250514\\waveform_metrics.csv"
+    }
+}

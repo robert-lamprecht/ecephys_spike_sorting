@@ -57,7 +57,7 @@ def run_CatGT(args):
     cmd_parts = list()
     
     cmd_parts.append(catGTexe_fullpath)
-    cmd_parts.append('-dir=' + args['directories']['npx_directory'])
+    cmd_parts.append('-dir="' + args['directories']['npx_directory'] + '"')
     cmd_parts.append('-run=' + args['catGT_helper_params']['run_name'])
     cmd_parts.append('-g=' + args['catGT_helper_params']['gate_string'])
     cmd_parts.append('-t=' + args['catGT_helper_params']['trigger_string'])
@@ -67,7 +67,7 @@ def run_CatGT(args):
     if args['catGT_helper_params']['maxZ_um'] > 0:
         cmd_parts.append(maxZ_str)
     cmd_parts.append(args['catGT_helper_params']['cmdStr'])
-    cmd_parts.append('-dest=' + args['directories']['extracted_data_directory'])
+    cmd_parts.append('-dest="' + args['directories']['extracted_data_directory'] + '"')
     
     # print('cmd_parts')
 
